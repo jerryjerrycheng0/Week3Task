@@ -2,27 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crosshair_AnimationController : MonoBehaviour
+namespace GameDevWithMarco.Crosshair
 {
-    private Animator animVariable;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Crosshair_AnimationController : MonoBehaviour
     {
-        animVariable = GetComponent<Animator>();
-    }
+        private Animator animVariable;
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // Start is called before the first frame update
+        void Start()
         {
-            FireAnimation();
+            animVariable = GetComponent<Animator>();
         }
-    }
 
-    public void FireAnimation()
-    {
-        animVariable.SetTrigger("Shoot");
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                FireAnimation();
+            }
+        }
+
+        public void FireAnimation()
+        {
+            animVariable.SetTrigger("Shoot");
+        }
     }
 }

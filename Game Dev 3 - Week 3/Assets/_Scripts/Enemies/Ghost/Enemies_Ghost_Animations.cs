@@ -2,30 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies_Ghost_Animations : MonoBehaviour
+namespace GameDevWithMarco.Enemies
 {
-    Animator anim;
-    Enemies_Ghost_Movement movementScript;
-
-
-    void Start()
+    public class Enemies_Ghost_Animations : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-        movementScript = GetComponentInParent<Enemies_Ghost_Movement>();
-    }
+        Animator anim;
+        Enemies_Ghost_Movement movementScript;
 
-    public void PlayAlertedAnimations()
-    {
-        anim.SetTrigger("alerted");
-    }
 
-    public void PlayChaseAnimation()
-    {
-        anim.SetBool("isChasing", true);
-    }
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+            movementScript = GetComponentInParent<Enemies_Ghost_Movement>();
+        }
 
-    public void PlayIdleAnimation()
-    {
-        anim.SetBool("isChasing", false);
+        public void PlayAlertedAnimations()
+        {
+            anim.SetTrigger("alerted");
+        }
+
+        public void PlayChaseAnimation()
+        {
+            anim.SetBool("isChasing", true);
+        }
+
+        public void PlayIdleAnimation()
+        {
+            anim.SetBool("isChasing", false);
+        }
     }
 }

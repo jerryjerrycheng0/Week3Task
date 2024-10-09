@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies_Tower_Animations : MonoBehaviour
+namespace GameDevWithMarco.Enemies
 {
-    Animator anim;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Enemies_Tower_Animations : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
+        Animator anim;
 
-    public void PlayerHasBeenSpottedAnimation()
-    {
-        anim.SetTrigger("playerSpotted");
+        // Start is called before the first frame update
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
+
+        public void PlayerHasBeenSpottedAnimation()
+        {
+            anim.SetTrigger("playerSpotted");
+        }
     }
 }

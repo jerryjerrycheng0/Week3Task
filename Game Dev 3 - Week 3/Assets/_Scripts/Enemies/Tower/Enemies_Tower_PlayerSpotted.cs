@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies_Tower_PlayerSpotted : MonoBehaviour
+namespace GameDevWithMarco.Enemies
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Enemies_Tower_PlayerSpotted : MonoBehaviour
     {
-        //If the player enters the collider, the spotted event is raised!
-        if (collision.gameObject.tag == "Player")
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            //Do something
+            //If the player enters the collider, the spotted event is raised!
+            if (collision.gameObject.tag == "Player")
+            {
+                //Do something
+            }
         }
     }
 }

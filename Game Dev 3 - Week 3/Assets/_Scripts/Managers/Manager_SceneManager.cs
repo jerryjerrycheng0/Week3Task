@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Manager_SceneManager : MonoBehaviour
+namespace GameDevWithMarco.Managers
 {
-    /// <summary>
-    /// Simple scene manager that at the moment is only capable to load the next scene.
-    /// </summary>
-    public void LoadNextScene()
+    public class Manager_SceneManager : MonoBehaviour
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        /// <summary>
+        /// Simple scene manager that at the moment is only capable to load the next scene.
+        /// </summary>
+        public void LoadNextScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
