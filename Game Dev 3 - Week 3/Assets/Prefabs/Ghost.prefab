@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3569944147014771681}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.01, y: 1.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3569944147288387907}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3569944147014771683
 SpriteRenderer:
@@ -110,6 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3569944147288387906}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -117,7 +118,6 @@ Transform:
   m_Children:
   - {fileID: 3569944147014771682}
   m_Father: {fileID: 3569944148306816917}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3569944147288387916
 SpriteRenderer:
@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 3569944148306816912}
   - component: {fileID: 3569944148306816919}
   - component: {fileID: 3569944148306816914}
+  - component: {fileID: 377654233842752254}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -232,6 +233,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3569944148306816916}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.73, y: -0.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -239,7 +241,6 @@ Transform:
   m_Children:
   - {fileID: 3569944147288387907}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &3569944148306816918
 CircleCollider2D:
@@ -373,3 +374,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lostTrackDistance: 50
+--- !u!114 &377654233842752254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569944148306816916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b156b310ef7874480e7bf7c59e3dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e149ca9e04d830f4cbfc4f5c50197b28, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3569944148306816914}
+        m_TargetAssemblyTypeName: GameDevWithMarco.Enemies.Enemies_Ghost_Movement,
+          Assembly-CSharp
+        m_MethodName: ChaseThePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3569944147288387919}
+        m_TargetAssemblyTypeName: GameDevWithMarco.Enemies.Enemies_Ghost_Animations,
+          Assembly-CSharp
+        m_MethodName: PlayAlertedAnimations
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
