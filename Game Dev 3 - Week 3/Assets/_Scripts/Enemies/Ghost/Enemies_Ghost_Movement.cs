@@ -19,6 +19,7 @@ namespace GameDevWithMarco.Enemies
 
         //Variables for the animation
         Enemies_Ghost_Animations ghostAnimationScript;
+        Enemies_GhostHP ghostHP;
 
 
         void Start()
@@ -36,6 +37,7 @@ namespace GameDevWithMarco.Enemies
             destinationSetter = GetComponent<AIDestinationSetter>();
             playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
             ghostAnimationScript = GetComponentInChildren<Enemies_Ghost_Animations>();
+            ghostHP = GetComponentInChildren<Enemies_GhostHP>();
             aiPathComponentVariable = GetComponent<AIPath>();
         }
 
@@ -66,7 +68,6 @@ namespace GameDevWithMarco.Enemies
 
         public void StopChasingThePlayer()
         {
-            Debug.Log("Stop Chasin the Player!");
             //Stops ai from moving
             destinationSetter.target = transform;
         }

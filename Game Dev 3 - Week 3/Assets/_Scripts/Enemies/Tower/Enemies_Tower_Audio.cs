@@ -19,5 +19,9 @@ namespace GameDevWithMarco.Enemies
             alarmRepeater.pitch = Random.Range(0.8f, 1.3f);
             alarmRepeater.Play();
         }
+        public void ReviveGhosts()
+        {
+            alarmRepeater.Play();
+        }
     }
 }

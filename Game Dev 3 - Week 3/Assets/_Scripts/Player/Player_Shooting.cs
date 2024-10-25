@@ -6,21 +6,24 @@ namespace GameDevWithMarco.Player
 {
     public class Player_Shooting : MonoBehaviour
     {
-        [Header("Arrow")]
-        //This variable will keep track of what game object should the arrow be
-        [SerializeField] GameObject currentArrowGameobject;
+        [Header("Arrow Settings")]
+        public GameObject currentArrowGameobject;
 
         [Header("Instantiation Related Variables")]
-        //To know where we want the arrows to come from
         public Transform tipOfTheCrossbow;
-        //Will be used to give force to the projectile
         public float projectileForce;
-        //Will need this to access some variables
         public GameObject crossbowSprites;
 
+        public int crossbowDamage;
 
+        private void Start()
+        {
+            if (currentArrowGameobject == null)
+            {
+                Debug.LogWarning("No arrow data set in Player_Shooting!");
+            }
+        }
 
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -29,16 +32,19 @@ namespace GameDevWithMarco.Player
             }
         }
 
-
+        // Method to update arrow data from Player_TopDownControls
+        public void SetArrowData(Player_ArrowData newArrowData)
+        {
+            currentArrowGameobject = newArrowData.arrowObject;
+            projectileForce = newArrowData.arrowForce;
+            crossbowDamage = Random.Range(2, 10);
+            Debug.Log("Updated Player_Shooting with arrow type: " + newArrowData.arrowType);
+        }
 
         void ShootArrow()
         {
-            //Spawns a game object that we have set, at a location we set, with a rotation we set
-            //Then it stores it into the projectile local variable for later use
             GameObject projectile = Instantiate(currentArrowGameobject, tipOfTheCrossbow.position, crossbowSprites.transform.rotation);
-            //It finds the rigid body of the projectile game object and stores it into a local variables
             Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
-            //Adds force to the rigidybody of the projectile in order to eject it in the direction we need
             projectileRigidbody.AddForce(tipOfTheCrossbow.right * projectileForce);
         }
     }
