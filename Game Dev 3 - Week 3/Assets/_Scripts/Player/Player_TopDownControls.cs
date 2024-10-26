@@ -16,26 +16,23 @@ namespace GameDevWithMarco.Player
         public float originalSpeed;
         public bool amIDashing = false;
 
-        // Array of arrow types
-        public Player_ArrowData[] arrowDataArray;
+        public Player_ArrowData[] arrowDataArray; // Array of arrow types
         private int currentArrowIndex = 0;
 
-        // Reference to Player_Shooting script
-        private Player_Shooting playerShooting;
+        // Event for switching arrow type
+        public delegate void ArrowTypeSwitched(Player_ArrowData newArrowData);
+        public static event ArrowTypeSwitched OnArrowTypeSwitched;
 
         private void Start()
         {
             playerRigidBody = GetComponent<Rigidbody2D>();
             originalSpeed = movementSpeed;
 
-            // Find the Player_Shooting component
-            playerShooting = GetComponent<Player_Shooting>();
-
             // Initialize arrow type if available
             if (arrowDataArray.Length > 0)
             {
                 currentArrowIndex = 0;
-                SetCurrentArrowData();
+                NotifyArrowTypeChange();
             }
             else
             {
@@ -47,7 +44,6 @@ namespace GameDevWithMarco.Player
         {
             GetInputValues();
 
-            // Check if Left Shift is pressed to switch arrow types
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 SwitchArrowType();
@@ -90,25 +86,16 @@ namespace GameDevWithMarco.Player
             }
         }
 
-        // Switch to the next arrow type and update both Player_TopDownControls and Player_Shooting
         private void SwitchArrowType()
         {
             currentArrowIndex = (currentArrowIndex + 1) % arrowDataArray.Length;
-            SetCurrentArrowData();
+            NotifyArrowTypeChange();
         }
 
-        // Set the current arrow data in both Player_TopDownControls and Player_Shooting
-        private void SetCurrentArrowData()
+        private void NotifyArrowTypeChange()
         {
-            // Update the arrow data in this script
             Player_ArrowData currentArrowData = arrowDataArray[currentArrowIndex];
-
-            // Update the Player_Shooting script with the current arrow data
-            if (playerShooting != null)
-            {
-                playerShooting.SetArrowData(currentArrowData);
-            }
-
+            OnArrowTypeSwitched?.Invoke(currentArrowData);
             Debug.Log("Switched to arrow type: " + currentArrowData.arrowType);
         }
 

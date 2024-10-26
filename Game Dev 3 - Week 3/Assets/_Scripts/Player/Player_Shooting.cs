@@ -13,8 +13,17 @@ namespace GameDevWithMarco.Player
         public Transform tipOfTheCrossbow;
         public float projectileForce;
         public GameObject crossbowSprites;
-
         public int crossbowDamage;
+
+        private void OnEnable()
+        {
+            Player_TopDownControls.OnArrowTypeSwitched += UpdateArrowData;
+        }
+
+        private void OnDisable()
+        {
+            Player_TopDownControls.OnArrowTypeSwitched -= UpdateArrowData;
+        }
 
         private void Start()
         {
@@ -32,8 +41,7 @@ namespace GameDevWithMarco.Player
             }
         }
 
-        // Method to update arrow data from Player_ArrowData
-        public void SetArrowData(Player_ArrowData newArrowData)
+        private void UpdateArrowData(Player_ArrowData newArrowData)
         {
             currentArrowGameobject = newArrowData.arrowObject;
             projectileForce = newArrowData.arrowForce;
@@ -41,7 +49,6 @@ namespace GameDevWithMarco.Player
             Debug.Log("Updated Player_Shooting with arrow type: " + newArrowData.arrowType);
         }
 
-        //Shoots arrows
         void ShootArrow()
         {
             GameObject projectile = Instantiate(currentArrowGameobject, tipOfTheCrossbow.position, crossbowSprites.transform.rotation);
