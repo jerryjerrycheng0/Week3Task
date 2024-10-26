@@ -37,7 +37,7 @@ namespace GameDevWithMarco.Player
         {
             currentArrowGameobject = newArrowData.arrowObject;
             projectileForce = newArrowData.arrowForce;
-            crossbowDamage = Random.Range(2, 10);
+            crossbowDamage = newArrowData.arrowDamage;
             Debug.Log("Updated Player_Shooting with arrow type: " + newArrowData.arrowType);
         }
 

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StraightArrow
   m_EditorClassIdentifier: 
   arrowObject: {fileID: 7077255675135542185, guid: 803b975f782cf71429b6739e62f75bc8, type: 3}
-  arrowDamage: 6
   arrowForce: 1000
+  arrowDamage: 5
   arrowType: 1

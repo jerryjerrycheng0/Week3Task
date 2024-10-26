@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 3569944148306816919}
   - component: {fileID: 3569944148306816914}
   - component: {fileID: 377654233842752254}
+  - component: {fileID: 3876060331945689446}
   - component: {fileID: 3642630395962693323}
   m_Layer: 0
   m_Name: Ghost
@@ -417,6 +418,70 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3876060331945689446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569944148306816916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b156b310ef7874480e7bf7c59e3dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 922621797ab1dd54687436edc077f4d4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3642630395962693323}
+        m_TargetAssemblyTypeName: GameDevWithMarco.Enemies.Enemies_GhostHP, Assembly-CSharp
+        m_MethodName: Revive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3569944147288387916}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3569944148306816918}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3569944147288387917}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &3642630395962693323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,5 +495,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostHP: 20
-  isHurt: 0
-  arrowData: {fileID: 11400000, guid: ad2a634ea4b5a8d499a92cc25cc62d9a, type: 2}
+  isDead: 0
+  readyToRevive: 0
+  playerShooting: {fileID: 2160639822967871292, guid: 76376479c5f4a6b4baaec92029b1219c, type: 3}
+  spriteRenderer: {fileID: 3569944147288387916}
+  animExclam: {fileID: 3569944147288387917}

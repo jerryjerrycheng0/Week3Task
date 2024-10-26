@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CurvedArrow
   m_EditorClassIdentifier: 
   arrowObject: {fileID: 5982048476353602490, guid: 91bde4b637851444092b1073159b6c04, type: 3}
-  arrowDamage: 3
   arrowForce: 300
+  arrowDamage: 1
   arrowType: 0

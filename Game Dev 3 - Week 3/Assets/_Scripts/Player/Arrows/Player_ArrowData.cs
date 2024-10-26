@@ -9,6 +9,7 @@ namespace GameDevWithMarco.Player
     {
         public GameObject arrowObject;
         public float arrowForce;
+        public int arrowDamage;
         public enum ArrowType
         {
             Curve,

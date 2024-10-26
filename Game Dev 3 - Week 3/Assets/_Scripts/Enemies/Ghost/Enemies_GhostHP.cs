@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameDevWithMarco.Player;
+using Pathfinding;
 
 namespace GameDevWithMarco.Enemies
 {
@@ -9,14 +10,27 @@ namespace GameDevWithMarco.Enemies
     {
         public int ghostHP = 20;
         public bool isDead = false;
+        public bool readyToRevive = false;
+        public Player_Shooting playerShooting;
+        [SerializeField] SpriteRenderer spriteRenderer;
+        [SerializeField] Animator animExclam;
+        private Collider2D ghostCollider;
+        AIDestinationSetter destinationSetter;
+        
+
+
+        public void Start()
+        {
+            playerShooting = FindObjectOfType<Player_Shooting>();
+            ghostCollider = GetComponent<Collider2D>();
+            destinationSetter = GetComponent<AIDestinationSetter>();
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            // Check if the colliding object is an arrow
             if (collision.gameObject.CompareTag("Arrows"))
             {
-
-                    TakeDamage(Random.Range(2, 10));
+                TakeDamage(playerShooting.crossbowDamage);
             }
         }
 
@@ -25,7 +39,6 @@ namespace GameDevWithMarco.Enemies
         {
             ghostHP -= damage;
 
-            // Check if ghostHP is less than or equal to 0
             if (ghostHP <= 0)
             {
                 Die();
@@ -35,15 +48,28 @@ namespace GameDevWithMarco.Enemies
         // Method to handle ghost's death
         private void Die()
         {
-            gameObject.SetActive(false);
+            spriteRenderer.enabled = false;
+            ghostCollider.enabled = false;
+            animExclam.enabled = false;
             isDead = true;
+            readyToRevive = true;
+            destinationSetter.target = transform;
         }
+
+        // Revive the ghost and reset its health
         public void Revive()
         {
-            ghostHP = 20;
-            gameObject.SetActive(true);
-            isDead = false;
-            Debug.Log("Ghosts are back");
+            if (readyToRevive == true)
+            {
+                ghostHP = 20;
+                spriteRenderer.enabled = true;
+                ghostCollider.enabled = true;
+                animExclam.enabled = true;
+                isDead = false;
+                readyToRevive = false;
+                
+                Debug.Log("Ghosts are back");
+            }
         }
     }
 }
