@@ -16,7 +16,7 @@ namespace GameDevWithMarco.Player
         public float originalSpeed;
         public bool amIDashing = false;
 
-        public Player_ArrowData[] arrowDataArray; // Array of arrow types
+        public Player_ArrowData[] arrowDataArray; //Array of arrow types
         private int currentArrowIndex = 0;
 
         // Event for switching arrow type
@@ -38,7 +38,7 @@ namespace GameDevWithMarco.Player
             }
             else
             {
-                Debug.LogWarning("No arrow types assigned to Player_TopDownControls!");
+                Debug.LogWarning("No arrow types assigned to Player_TopDownControls!"); //Failsafe
             }
         }
 
@@ -48,7 +48,7 @@ namespace GameDevWithMarco.Player
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                SwitchArrowType();
+                SwitchArrowType(); //Switches the type of arrows
             }
         }
 
@@ -72,8 +72,8 @@ namespace GameDevWithMarco.Player
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 amIDashing = true;
-                playerDashSound.Play();
-                StartCoroutine(DashRoll());
+                playerDashSound.Play(); //Plays a sound when dashing
+                StartCoroutine(DashRoll()); 
             }
         }
 
@@ -81,7 +81,7 @@ namespace GameDevWithMarco.Player
         {
             if (amIDashing)
             {
-                playerRigidBody.MovePosition(playerRigidBody.position + movement * dashMovementSpeed * Time.fixedDeltaTime);
+                playerRigidBody.MovePosition(playerRigidBody.position + movement * dashMovementSpeed * Time.fixedDeltaTime); //Briefly dashes
             }
             else
             {
@@ -91,7 +91,7 @@ namespace GameDevWithMarco.Player
 
         private void SwitchArrowType()
         {
-            currentArrowIndex = (currentArrowIndex + 1) % arrowDataArray.Length;
+            currentArrowIndex = (currentArrowIndex + 1) % arrowDataArray.Length; //Switches the arrow type
             NotifyArrowTypeChange();
         }
 

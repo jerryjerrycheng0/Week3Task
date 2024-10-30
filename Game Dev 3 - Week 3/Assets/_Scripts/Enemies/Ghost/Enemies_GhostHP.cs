@@ -33,7 +33,7 @@ namespace GameDevWithMarco.Enemies
         {
             if (collision.gameObject.CompareTag("Arrows"))
             {
-                TakeDamage(playerShooting.crossbowDamage);
+                TakeDamage(playerShooting.crossbowDamage); //takes damage according to the Player Shooting script's output
             }
         }
 
@@ -48,13 +48,14 @@ namespace GameDevWithMarco.Enemies
             }
             if (ghostHP > 0)
             {
-                ghostOof.Play();
+                ghostOof.Play(); //Ensures this sound only plays when taking damage and not when dead
             }
         }
 
         // Method to handle ghost's death
         private void Die()
         {
+            //Disables everything so the revive method would work properly (deactivating the whole thing doesn't work)
             spriteRenderer.enabled = false;
             ghostCollider.enabled = false;
             animExclam.enabled = false;
@@ -67,6 +68,7 @@ namespace GameDevWithMarco.Enemies
         // Revive the ghost and reset its health
         public void Revive()
         {
+            //Revives all ghosts
             if (readyToRevive == true)
             {
                 ghostHP = 20;
