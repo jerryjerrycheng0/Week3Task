@@ -23,6 +23,8 @@ namespace GameDevWithMarco.Player
         public delegate void ArrowTypeSwitched(Player_ArrowData newArrowData);
         public static event ArrowTypeSwitched OnArrowTypeSwitched;
 
+        public AudioSource playerDashSound;
+
         private void Start()
         {
             playerRigidBody = GetComponent<Rigidbody2D>();
@@ -70,6 +72,7 @@ namespace GameDevWithMarco.Player
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 amIDashing = true;
+                playerDashSound.Play();
                 StartCoroutine(DashRoll());
             }
         }

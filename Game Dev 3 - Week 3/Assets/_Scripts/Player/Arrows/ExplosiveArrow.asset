@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ExplosiveArrow
   m_EditorClassIdentifier: 
   arrowObject: {fileID: 6835646761144096160, guid: a7eb0baaa4dd01c4ab9fb16babb13973, type: 3}
-  arrowDamage: 10
   arrowForce: 600
+  arrowDamage: 10
   arrowType: 2
+  pitch: 1

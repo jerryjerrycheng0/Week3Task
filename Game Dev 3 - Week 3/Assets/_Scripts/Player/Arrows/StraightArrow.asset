@@ -16,3 +16,4 @@ MonoBehaviour:
   arrowForce: 1000
   arrowDamage: 5
   arrowType: 1
+  pitch: 1.5

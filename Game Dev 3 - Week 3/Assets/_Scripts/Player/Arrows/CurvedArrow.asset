@@ -16,3 +16,4 @@ MonoBehaviour:
   arrowForce: 300
   arrowDamage: 1
   arrowType: 0
+  pitch: 0.6

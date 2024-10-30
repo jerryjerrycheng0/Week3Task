@@ -16,6 +16,9 @@ namespace GameDevWithMarco.Enemies
         [SerializeField] Animator animExclam;
         private Collider2D ghostCollider;
         AIDestinationSetter destinationSetter;
+        public AudioSource ghostOof;
+
+        public AudioSource ghostDed;
         
 
 
@@ -43,6 +46,10 @@ namespace GameDevWithMarco.Enemies
             {
                 Die();
             }
+            if (ghostHP > 0)
+            {
+                ghostOof.Play();
+            }
         }
 
         // Method to handle ghost's death
@@ -54,6 +61,7 @@ namespace GameDevWithMarco.Enemies
             isDead = true;
             readyToRevive = true;
             destinationSetter.target = transform;
+            ghostDed.Play();
         }
 
         // Revive the ghost and reset its health
@@ -67,8 +75,6 @@ namespace GameDevWithMarco.Enemies
                 animExclam.enabled = true;
                 isDead = false;
                 readyToRevive = false;
-                
-                Debug.Log("Ghosts are back");
             }
         }
     }

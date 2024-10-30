@@ -10,12 +10,15 @@ namespace GameDevWithMarco.Player
         public GameObject arrowObject;
         public float arrowForce;
         public int arrowDamage;
+
         public enum ArrowType
         {
             Curve,
             Straight,
             Explosive
         }
+
         public ArrowType arrowType;
+        public float pitch = 1.0f; // Default pitch value
     }
 }
